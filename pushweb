@@ -1,0 +1,41 @@
+#!/bin/bash
+
+#### Header
+
+# File: CG_Push.sh
+# Brief Description: Script for CSI-230-01 Lab 9 to push apache from a remote server using rsync
+# Author: Courtney Grimes
+# Due Date: November 2, 2020
+
+
+#### CONSTANTS
+
+AWSHOST="ec2-18-207-1-27.compute-1.amazonaws.com"
+AWSUSER="push-web"
+LOCALDIR="web-content"
+
+#### MAIN
+
+cd /root/Lab9 #change to working directory
+
+rsync -e "ssh -i keys/push-web" -vraO --no-perms --delete --chmod=660 --chown=push-web:www-data "${LOCALDIR}/" "${AWSUSER}@${AW>
+
+logger -t $0 "web content pushed to ${AWSHOST}" #write an entry to syslog
+
+echo "web content pushed to ${AWSHOST}" | mail -s "pushweb execution" courtney.grimes@mymail.champlain.edu #sends email upon ex>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
